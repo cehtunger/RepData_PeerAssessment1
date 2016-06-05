@@ -1,13 +1,10 @@
----
-title: "Reproducible Research: Peer Assessment 1"
-output: 
-  html_document:
-    keep_md: true
----
+Reproducible reaserch assignment 1 - Gordan Valjak
+==================================
 
+This document provides instructions for reproducing data analysis of personal movement using activity monitoring.
+The analysis is part of the [Coursera](https://www.coursera.org/) course [Reproducible Research](https://www.coursera.org/learn/reproducible-research/home/welcome), which is part of [Data Science](https://www.coursera.org/specializations/jhu-data-science) specialization.
 
-## Loading and preprocessing the data
-
+### Loading data
 The dataset is loaded from file "activity.csv" which should be in your R working directory (either copy file to your working directory, or change working directory to the location of the file). There should be 17568 observations in the dataset.
 
 ```{r}
@@ -16,9 +13,7 @@ str(activity)
 
 ```
 
-
-## What is mean total number of steps taken per day?
-
+### Total number of steps per day
 For this part we will ignore missing values. 
 We will calculate total number of steps per day using tapply function:
 ```{r}
@@ -36,9 +31,7 @@ mean(steps_day, na.rm = TRUE)
 median(steps_day, na.rm = TRUE)
 ```
 
-
-## What is the average daily activity pattern?
-
+###Average daily activity pattern
 We will calculate average number of steps per 5-minute interval, and plot time series plot of that data.
 ```{r}
 steps_interval <- tapply(activity$steps, activity$interval, sum, na.rm = TRUE)
@@ -51,7 +44,7 @@ steps_interval[steps_interval == max(steps_interval)]
 ```
 
 
-## Imputing missing values
+### Imputing missing values
 
 Total number of rows with missing values (coded as NA):
 ```{r}
@@ -83,7 +76,7 @@ median(steps_day_clean)
 ```
 
 
-## Are there differences in activity patterns between weekdays and weekends?
+###Analysis of weekdays and weekends activity
 
 We will create new variable which indicates if the given day is weekday or weekend day.
 First we will create a vector of factor variable from the dataset, than add that vector as a column to clean dataset. We will use
