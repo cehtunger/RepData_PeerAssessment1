@@ -60,7 +60,7 @@ median(steps_day, na.rm = TRUE)
 We will calculate average number of steps per 5-minute interval, and plot time series plot of that data.
 
 ```r
-steps_interval <- tapply(activity$steps, activity$interval, sum, na.rm = TRUE)
+steps_interval <- tapply(activity$steps, activity$interval, mean, na.rm = TRUE)
 plot(rownames(steps_interval), steps_interval, xlab = "5 minute interval", ylab = "average number of steps", type = "l")
 ```
 
@@ -73,8 +73,8 @@ steps_interval[steps_interval == max(steps_interval)]
 ```
 
 ```
-##   835 
-## 10927
+##      835 
+## 206.1698
 ```
 
 
